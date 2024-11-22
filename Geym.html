@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taş-Kağıt-Makas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #ddd;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Taş-Kağıt-Makas</h1>
+  <p>Bir seçim yap:</p>
+  <button onclick="play('taş')">Taş</button>
+  <button onclick="play('kağıt')">Kağıt</button>
+  <button onclick="play('makas')">Makas</button>
+  <div id="result"></div>
+
+  <script>
+    function play(userChoice) {
+      const choices = ['taş', 'kağıt', 'makas'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+      let result = '';
+      if (userChoice === computerChoice) {
+        result = `Berabere! İkisi de ${userChoice}.`;
+      } else if (
+        (userChoice === 'taş' && computerChoice === 'makas') ||
+        (userChoice === 'kağıt' && computerChoice === 'taş') ||
+        (userChoice === 'makas' && computerChoice === 'kağıt')
+      ) {
+        result = `Kazandın! Sen: ${userChoice}, Bilgisayar: ${computerChoice}.`;
+      } else {
+        result = `Kaybettin! Sen: ${userChoice}, Bilgisayar: ${computerChoice}.`;
+      }
+
+      document.getElementById('result').innerText = result;
+    }
+  </script>
+</body>
+</html>
